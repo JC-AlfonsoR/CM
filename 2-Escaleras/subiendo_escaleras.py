@@ -38,16 +38,16 @@ def Escaleras(A,B):
     #Validar Datos    
     if len(A)!=len(B):
         print("Error, los arreglos A y B deben ser del mismo tamaño")
-        #break
-    L = len(A)
-    C = [0]*L
-    
-    for i in range(L):
-        a = Fibo_s(A[i]) #Formas de escalar con A[i] escalones
-        b = B[i]
-        c = a%(2*b)
-        C[i] = c
-    return C
+    else:    
+        L = len(A)
+        C = [0]*L
+        
+        for i in range(L):
+            a = A[i]
+            b = B[i]
+            c = Fibo_s(a%(2*b)) #Calcular cada elemento c
+            C[i] = c
+        return C
 #%% Punto a
 print("Dadas las reglas para subir la escalera:\n"\
 "Para N=13, se tienen", Fibo_s(13),"formas diferentes de subir la escalera\n"\
