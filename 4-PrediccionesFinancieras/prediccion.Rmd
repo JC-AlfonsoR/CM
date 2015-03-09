@@ -1,0 +1,41 @@
+---
+title: "Prediccion"
+author: "J. Camilo"
+date: " March 2015"
+output: html_document
+---
+
+
+```{r}
+#Cargar Paquetes
+library(Quandl)
+library(ggplot2)
+library(lubridate)
+```
+
+```{r}
+#Descargar datos
+Data <- Quandl("CURRFX/USDCOP", trim_start="2000-01-01", trim_end="2015-02-23")
+```
+
+```{r}
+#Imprimir los 5 primeros datos
+head(Data,n=5L)
+```
+
+
+```{r}
+#Graficar la serie de tiempo
+gp <- ggplot(Data) + geom_point(aes(x=Date,y = Rate))
+gp <- gp + labs(title=paste("USD-COP exchange rate from ",Data[nrow(Data),1]," to ",Data[1,1]))
+gp
+```
+
+```{r}
+#Agregar columna de 'year' para poder hacer facets acorde a 'year'
+Data["year"] <- lapply(Data["Date"],year)
+Data["month"] <- lapply(Data["Date"],month)
+
+sp <- ggplot(Data,aes(x=month, y=Rate))
+sp + facet_wrap(~year,scales="free")
+```
