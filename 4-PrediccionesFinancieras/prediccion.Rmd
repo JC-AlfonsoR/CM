@@ -36,6 +36,13 @@ gp
 Data["year"] <- lapply(Data["Date"],year)
 Data["month"] <- lapply(Data["Date"],month)
 
-sp <- ggplot(Data,aes(x=month, y=Rate))
+sp <- ggplot(Data,aes(x=month, y=Rate)) + geom_point(shape=1)
 sp + facet_wrap(~year,scales="free")
+```
+
+```{r}
+#Modelo Lineal
+#f <- lm(Data["Rate"]~Data["Date"])
+#summary(f)
+#La linea anterior no funciona porque Data["Date"] es un objeto tipo lista no compatible con la funcion lm()
 ```
