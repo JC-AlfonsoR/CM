@@ -11,6 +11,8 @@ Solution for computational methods homework 3
 1. Pedir el numero de lineas por parametro
 2. Definir funcion que identifique vocales
 """
+import unicodedata
+
 def is_vowel(V):
     """
     'v' string de 1 caracter para validar si es vocal
@@ -22,7 +24,7 @@ def is_vowel(V):
     a = 0;
     i = 0;
     for v in vowels:
-        if(v==s):
+        if(v==s): #Verificar que sea alguna de las vocales en vowels
             return True
             break
         else:
@@ -56,8 +58,10 @@ C = 0 #Contador de vocales
 i = 1#contador de lineas
 for i in range(n): #Leer las primeras 'n' lineas del texto
     s = SB.readline() #leer linea
-    ss = ''.join(e for e in s if e.isalnum()) #Extraer solo caracters alfa-num
-    c = c_vowel(ss)
+    ss = ''.join((c for c in unicodedata.normalize('NFD', s) if unicodedata.category(c) != 'Mn'))
+    #Quitar el acento de las vocales acentuadas
+    sss = ''.join(e for e in ss if e.isalnum()) #Extraer solo caracters alfa-num
+    c = c_vowel(sss)
     print("\nLinea ",n1+i,"--- ",c," vocales")
     C = C+c
     
