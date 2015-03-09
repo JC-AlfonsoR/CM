@@ -2,7 +2,9 @@
 Homework 3 for computational methods class
 
 Puede haber problemas al leer el archivo *animate.ipynb* ya que fue creado usando Jupyter de kernel Python 2
+
 Todos los *.py* indican que version de python usan
+
 Los demas *ipynb* fueron creados con Ipython de kernel python 3
 
 Aca una visualizacion de los notebooks en caso de ser necesaria
